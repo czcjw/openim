@@ -1,6 +1,8 @@
 @echo off
 SETLOCAL
 
+set GOARCH=386
+
 go env
 
 mage -version >nul 2>&1
