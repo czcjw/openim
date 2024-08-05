@@ -126,6 +126,30 @@ func BuildWindows() error {
 	return nil
 }
 
+func BuildWindows() error {
+	fmt.Println("Building for Windows...")
+
+	outPath += "windows"
+
+	os.Setenv("GOOS", "windows")
+	os.Setenv("GOARCH", "386")
+	os.Setenv("CGO_ENABLED", "1")
+	os.Setenv("CC", "gcc")
+
+	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w", "-o", outPath+"/"+soName+".dll", ".")
+	cmd.Dir = goSrc
+	cmd.Env = os.Environ()
+	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
+
+	if err := cmd.Run(); err != nil {
+		fmt.Printf("Failed to build for Windows: %v\n", err)
+		return err
+	}
+	fmt.Println("Build for Windows completed successfully.")
+	return nil
+}
+
 // buildAndroid builds the Android library for the specified architecture.
 func buildAndroid(aOutPath, arch, apiLevel string) error {
 	fmt.Printf("Building for %s...\n", arch)
