@@ -14,7 +14,7 @@ jobs:
               build: buildWindows
             - os: windows-latest
               arch: 386
-              build: buildWindows
+              build: buildWindows386
   
       steps:
         - name: Checkout code
