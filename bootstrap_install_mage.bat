@@ -26,8 +26,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 )
 
 echo Mage installed successfully.
-
+echo $GITHUB_ENV
 set GOARCH=386
+echo $GITHUB_ENV
+echo "GOARCH=386" >> $GITHUB_ENV
+echo $GITHUB_ENV
 
 :DOWNLOAD
 go mod download
