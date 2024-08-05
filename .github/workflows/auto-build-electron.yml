@@ -10,9 +10,6 @@ jobs:
         matrix:
           include:
             - os: windows-latest
-              arch: amd64
-              build: buildWindows
-            - os: windows-latest
               arch: 386
               build: buildWindows386
   
@@ -24,6 +21,7 @@ jobs:
           uses: actions/setup-go@v5
           with:
             go-version: '1.22'
+            architecture: '386'
   
         - name: Check Go version
           run: go version
