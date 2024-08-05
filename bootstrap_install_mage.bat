@@ -1,6 +1,8 @@
 @echo off
 SETLOCAL
 
+go env
+
 mage -version >nul 2>&1
 IF %ERRORLEVEL% EQU 0 (
     echo Mage is already installed.
@@ -24,6 +26,8 @@ IF NOT %ERRORLEVEL% EQU 0 (
 )
 
 echo Mage installed successfully.
+
+set GOARCH=386
 
 :DOWNLOAD
 go mod download
