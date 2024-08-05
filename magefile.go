@@ -134,7 +134,7 @@ func BuildWindows386() error {
 	os.Setenv("GOOS", "windows")
 	os.Setenv("GOARCH", "386")
 	os.Setenv("CGO_ENABLED", "1")
-	os.Setenv("CC", " i686-w64-mingw32-gcc ")
+	os.Setenv("CC", "i686-w64-mingw32-gcc")
 
 	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w", "-o", outPath+"/"+soName+".dll", ".")
 	cmd.Dir = goSrc
