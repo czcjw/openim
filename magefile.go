@@ -126,7 +126,7 @@ func BuildWindows() error {
 	return nil
 }
 
-func BuildWindows() error {
+func BuildWindows386() error {
 	fmt.Println("Building for Windows...")
 
 	outPath += "windows"
