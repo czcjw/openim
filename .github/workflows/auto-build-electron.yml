@@ -35,6 +35,11 @@ jobs:
             ./bootstrap_install_mage.bat
             mage ${{ matrix.build }}
 
+        - name: Setup Go environment1
+          uses: actions/setup-go@v5
+          with:
+            go-version: '1.22'
+
         - name: Setup and build on ${{ matrix.os }} ${{ matrix.arch }}
           if: runner.os != 'Windows'
           run: |
