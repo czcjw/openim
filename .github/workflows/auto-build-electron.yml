@@ -32,7 +32,6 @@ jobs:
           if: runner.os == 'Windows'
           run: |
             echo "GOARCH=${{ matrix.arch }}" >> $GITHUB_ENV
-            echo $GITHUB_ENV
             ./bootstrap_install_mage.bat
             mage ${{ matrix.build }}
   
