@@ -9,18 +9,6 @@ jobs:
       strategy:
         matrix:
           include:
-            - os: ubuntu-latest
-              arch: amd64
-              build: buildLinux
-            - os: ubuntu-latest
-              arch: arm64
-              build: buildLinux
-            - os: macos-latest
-              arch: amd64
-              build: buildIOS
-            - os: macos-latest
-              arch: arm64
-              build: buildIOS
             - os: windows-latest
               arch: amd64
               build: buildWindows
