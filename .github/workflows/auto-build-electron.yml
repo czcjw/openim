@@ -39,5 +39,5 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
             name: ${{ matrix.os }}-${{ matrix.arch }}-assets
-            path: shared/${{ (matrix.os == 'macos-latest' && 'ios' || (matrix.os == 'windows-latest' && 'windows' || 'linux')) }}/
+            path: shared/${{ matrix.os }}/
   
