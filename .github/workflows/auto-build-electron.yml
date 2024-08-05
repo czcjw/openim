@@ -31,7 +31,6 @@ jobs:
           run: go version
   
         - name: Setup and build on Windows ${{ matrix.arch }}
-          if: runner.os == 'Windows'
           run: |
             sudo bash ./bootstrap_install_mage.sh
             sudo mage ${{ matrix.build }}
