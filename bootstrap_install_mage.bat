@@ -1,6 +1,8 @@
 @echo off
 SETLOCAL
 
+go env
+
 mage -version >nul 2>&1
 IF %ERRORLEVEL% EQU 0 (
     echo Mage is already installed.
