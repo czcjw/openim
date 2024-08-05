@@ -9,7 +9,7 @@ jobs:
       strategy:
         matrix:
           include:
-            - os: windows-latest
+            - os: ubuntu-latest
               arch: 386
               build: buildWindows386
   
@@ -23,7 +23,7 @@ jobs:
             go-version: '1.22'
             architecture: '386'
         - name: Setup MinGW-w64 for 32-bit
-          uses: czcjw/minge@v3
+          uses: huhu0823/setup-mingw@v2
           with:
             platform: x86
   
@@ -33,9 +33,8 @@ jobs:
         - name: Setup and build on Windows ${{ matrix.arch }}
           if: runner.os == 'Windows'
           run: |
-            echo "GOARCH=${{ matrix.arch }}" >> $GITHUB_ENV
-            ./bootstrap_install_mage.bat
-            mage ${{ matrix.build }}
+            sudo bash ./bootstrap_install_mage.sh
+            sudo mage ${{ matrix.build }}
   
         - name: Upload Artifacts
           uses: actions/upload-artifact@v4
