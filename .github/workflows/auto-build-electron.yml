@@ -26,6 +26,8 @@ jobs:
           run: |
             sudo apt-get update
             sudo apt-get install -y gcc-mingw-w64-x86-64
+            sudo apt-get install -y gcc-mingw-w64-x86
+            sudo apt-get install -y gcc-mingw-w64-i686
   
         - name: Check Go version
           run: go version
