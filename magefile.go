@@ -134,9 +134,12 @@ func BuildWindowsA() error {
 	os.Setenv("GOOS", "windows")
 	os.Setenv("GOARCH", "386")
 	os.Setenv("CGO_ENABLED", "1")
-	os.Setenv("CC", "x86-windows-static-md-gcc")
-	os.Setenv("CXX", "x86-windows-static-md-g++")
+	//os.Setenv("CC", "x86-windows-static-md-gcc")
+	//os.Setenv("CXX", "x86-windows-static-md-g++")
+	os.Setenv("CC", "gcc")
+	os.Setenv("CXX", "g++")
 
+	
 	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w", "-o", outPath+"/"+soName+".dll", ".")
 	cmd.Dir = goSrc
 	cmd.Env = os.Environ()
