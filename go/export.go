@@ -27,7 +27,7 @@ func set_print(print C.CB_S) {
 }
 
 //export uuid
-func uuid() {
+func uuid() *C.char {
 	return C.CString(utils.OperationIDGenerator())
 }
 
@@ -37,7 +37,7 @@ func GetMsgID(sendID *C.char) *C.char {
 }
 
 //export GetSdkVersion
-func GetSdkVersion() {
+func GetSdkVersion() *C.char {
 	return C.CString(version.Version)
 }
 
