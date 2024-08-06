@@ -136,8 +136,8 @@ func BuildWindowsA() error {
 	os.Setenv("CGO_ENABLED", "1")
 	//os.Setenv("CC", "x86-windows-static-md-gcc")
 	//os.Setenv("CXX", "x86-windows-static-md-g++")
-	os.Setenv("CC", "gcc")
-	os.Setenv("CXX", "g++")
+	os.Setenv("CC", "i686-w64-mingw32-gcc")
+	os.Setenv("CXX", "i686-w64-mingw32-g++")
 
 	
 	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w", "-o", outPath+"/"+soName+".dll", ".")
