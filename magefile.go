@@ -158,7 +158,7 @@ func BuildWindows386() error {
 
 	os.Setenv("GOOS", "windows")
 	os.Setenv("GOARCH", "386")
-	os.Setenv("CGO_ENABLED", "1")
+	os.Setenv("CGO_ENABLED", "0")
 	os.Setenv("CC", "i686-w64-mingw32-gcc")
 	//os.Setenv("CXX", "i686-w64-mingw32-g++")
 
