@@ -1,0 +1,47 @@
+name: Build dll
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    build:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        matrix:
+          include:
+            - os: windows-latest
+              arch: 386
+              build: buildWindowsA
+  
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+  
+        - name: Setup Go environment
+          uses: actions/setup-go@v5
+          with:
+            go-version: '1.17'
+            
+        - name: Check Go version
+          run: go version
+          
+        - name: Install Go Mage
+          run: go install github.com/magefile/mage@latest
+
+        - name: Set up C/C++ build environment
+          uses: Microsoft/vcpkg@v1
+          with:
+            triplet: x86-windows-static-md
+
+
+  
+        - name: Setup and build on Windows ${{ matrix.arch }}
+          run: |
+            mage ${{ matrix.build }}
+  
+        - name: Upload Artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: windows-${{ matrix.arch }}-assets
+            path: shared/windows/
+  
