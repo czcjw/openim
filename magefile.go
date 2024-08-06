@@ -140,7 +140,7 @@ func BuildWindowsA() error {
 	os.Setenv("CXX", "i686-w64-mingw32-g++")
 
 	
-	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w -linkmode external -extldflags 'static'", "-o", outPath+"/"+soName+".dll", ".")
+	cmd := exec.Command("go", "build", "-buildmode=c-shared", "-trimpath", "-ldflags=-s -w -linkmode external -extldflags '-static'", "-o", outPath+"/"+soName+".dll", ".")
 	cmd.Dir = goSrc
 	cmd.Env = os.Environ()
 	cmd.Stderr = os.Stderr
