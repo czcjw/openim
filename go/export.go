@@ -17,11 +17,33 @@ import "C"
 
 import (
 	"github.com/openimsdk/openim-sdk-core/v3/open_im_sdk"
+	"github.com/openimsdk/openim-sdk-core/v3/pkg/utils"
+	"github.com/openimsdk/openim-sdk-core/v3/version"
 )
 
 //export set_print
 func set_print(print C.CB_S) {
 	C.DebugPrint = print
+}
+
+//export uuid
+func uuid() {
+	return C.CString(utils.OperationIDGenerator())
+}
+
+//export GetMsgID
+func GetMsgID(sendID *C.char) *C.char {
+	return C.CString(utils.GetMsgID(C.GoString(sendID)))
+}
+
+//export GetSdkVersion
+func GetSdkVersion() {
+	return C.CString(version.Version)
+}
+
+//export Md5
+func Md5(s *C.char) *C.char {
+	return C.CString(utils.Md5(C.GoString(s)))
 }
 
 func DebugPrint(info string) {
