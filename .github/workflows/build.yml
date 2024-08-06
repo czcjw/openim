@@ -9,7 +9,7 @@ jobs:
       strategy:
         matrix:
           include:
-            - os: windows-latest
+            - os: windows-2019
               arch: 386
               build: buildWindowsA
   
