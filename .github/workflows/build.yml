@@ -29,7 +29,7 @@ jobs:
           run: go install github.com/magefile/mage@latest
 
         - name: Set up C/C++ build environment
-          uses: Microsoft/vcpkg@v1
+          uses: Microsoft/vcpkg@v2024.07.12
           with:
             triplet: x86-windows-static-md
 
