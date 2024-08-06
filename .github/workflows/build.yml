@@ -28,10 +28,10 @@ jobs:
         - name: Install Go Mage
           run: go install github.com/magefile/mage@latest
 
-        - name: Set up C/C++ build environment
-          uses: Microsoft/vcpkg@latest
+        - name: Install C/C++ build tools
+          uses: actions/setup-build@v1
           with:
-            triplet: x86-windows-static-md
+           tool: gcc
 
 
   
